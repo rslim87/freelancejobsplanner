@@ -1,0 +1,7 @@
+<h3>Here are all your jobs</h3>
+
+<% @jobs.each do |job| %>
+	<ul>
+		<li><%= link_to "Go to #{job.name}", job_path(job) %></li>
+	</ul>
+<% end %>
