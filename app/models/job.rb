@@ -4,4 +4,12 @@ class Job < ApplicationRecord
 	has_many :job_clients
 	has_many :clients, through: :job_clients
 
+=begin	def paid
+		if self.paid == true
+			 "yes"
+		else
+			 "no"
+		end
+	end=end
+
 end
