@@ -1,0 +1,16 @@
+<%= form_for(job) do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br>
+	<%= f.label :jobdate %>
+	<%= f.email_field :jobdate %>
+	<br>
+	<%= f.label :paid %>
+	<%= f.check_box :paid %>
+	<br>
+	<%= f.label :equipment %>
+	<%= f.text_area :equipment %>
+	<br>
+
+	
+<% end %>
