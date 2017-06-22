@@ -26,18 +26,18 @@ ActiveRecord::Schema.define(version: 20170621145637) do
     t.integer "user_id"
   end
 
-  create_table "job_clients", force: :cascade do |t|
+  create_table "job_categories", force: :cascade do |t|
     t.integer "job_id"
-    t.integer "client_id"
-    t.index ["client_id"], name: "index_job_clients_on_client_id"
-    t.index ["job_id"], name: "index_job_clients_on_job_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_job_categories_on_category_id"
+    t.index ["job_id"], name: "index_job_categories_on_job_id"
   end
 
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.string "jobdate"
     t.integer "payrate"
-    t.integer "category_id"
+    t.integer "client_id"
     t.boolean "paid"
     t.string "equipment"
     t.integer "user_id"

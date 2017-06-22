@@ -4,7 +4,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
     	t.string :name
     	t.string :jobdate
     	t.integer :payrate
-    	t.integer :category_id
+    	t.integer :client_id
     	t.boolean :paid 
     	t.string :equipment 
     	t.integer :user_id
