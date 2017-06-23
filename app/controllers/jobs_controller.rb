@@ -33,6 +33,12 @@ class JobsController < ApplicationController
 
 	def update
 		@job = Job.find_by_id(params[:id])
+		if @job.update(job_params)
+			redirect_to job_path(@job)
+		else
+			flash[:danger] = "Couldn't update job" 
+			 redirect_to edit_job_path(@job)
+		end
 	end
 
 		def show 
