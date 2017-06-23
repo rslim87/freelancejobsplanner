@@ -28,6 +28,7 @@ class JobsController < ApplicationController
 
 	def edit
 		@job = Job.find_by_id(params[:id])
+		@clients = Client.all
 	end
 
 	def update
