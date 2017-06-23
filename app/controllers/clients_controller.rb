@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
 	def index
-		@clients = Client.all
+		@clients = current_user.clients
 	end
 end
