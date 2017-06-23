@@ -2,3 +2,7 @@
 <% @clients.each do |client| %>
 	<%= link_to "#{client.fullname}", client_path(client) %>
 <% end %>
+
+<br>
+
+<%= link_to "Add a Client", new_client_path %>

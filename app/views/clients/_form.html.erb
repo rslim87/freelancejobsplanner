@@ -1,0 +1,21 @@
+	Create a New Client:
+	<br>
+	<%= fields_for client do |f| %>
+		Full Name:
+		<%= f.text_field :fullname %>
+		<br>
+		Street Name:
+		<%= f.text_field :street %>
+		<br>
+		Apt/Floor:
+		<%= f.text_field :apt %>
+		<br>
+		Borough:
+		<%= f.text_field :borough %>
+		<br>
+		Notes:
+		<%= f.text_area :notes %>
+		<br>
+		<br>
+		<%= f.submit %>
+	<% end %>
