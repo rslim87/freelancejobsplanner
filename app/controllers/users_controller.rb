@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
 	def new
 		@user = User.new
 	end
@@ -15,14 +16,14 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def destroy
-		session[:user_id] = nil
-		flash[:success] = "You have logged out"
-		redirect_to root_path
-	end
+
 
 	def show
 		@user = User.find_by_id(params[:id])
+		if current_user != @user
+		   flash[:danger] = "You can only see your own page"
+		   redirect_to root_path
+		end
 	end
 
 	
@@ -32,5 +33,7 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:name, :email, :password)
 	end
+
+
 
 end

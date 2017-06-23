@@ -1,9 +1,58 @@
-
 <ul>
+
 <% @job.errors.full_messages.each do |msg| %>
+
 <li><%= msg %></li>
+
 <% end %>
+
 </ul>
 
+<%= form_for @job do |f| %>
+	<%= f.label :name %>:
+	<%= f.text_field :name %>
+	<br>
+	<br>
+	Date of the Job:
+	<%= f.text_field :jobdate %>
+	<br>
+	<br>
+	<%= f.label :paid %>:
+	<%= f.check_box :paid %>
+	<br>
+	<br>
+	<%= f.label :payrate %>:
+	<%= f.number_field :payrate %>
+	<br>
+	<br>
+	Equipment needed:
+	<%= f.text_area :equipment %>
+	<br>
+	<br>
+	Category:
+	<%= f.collection_check_boxes :category_ids, Category.all, :id, :title %>
+	<br>
+	<br>
+	Create a New Category:
+	<br>
+	<%= f.fields_for :categories, @job.categories.build do |categories_fields| %>
+		Title:<%= categories_fields.text_field :title %>
+	<% end %>
+	<br>
+	<br>
+	Client:
+	<%= f.collection_check_boxes :client_id, Client.all, :id, :fullname  %>
+	<br>
+	<br>	
+	Create a New Client:
+	<br>
+	<%= f.fields_for :client do |client_field| %>
+		Full Name:
+		<%= client_field.text_field :fullname %>
+	<% end %>
+	<br>
+	<br>
+	<%= f.submit %>
 
-<%= render 'form', job: @job %>
+	
+<% end %>

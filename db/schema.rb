@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 20170621145637) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "streetname"
-    t.string "aptnumber"
+    t.string "fullname"
+    t.string "street"
+    t.string "apt"
     t.string "borough"
     t.string "notes"
     t.integer "user_id"
+    t.integer "job_id"
   end
 
   create_table "job_categories", force: :cascade do |t|
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170621145637) do
     t.string "name"
     t.string "jobdate"
     t.integer "payrate"
-    t.integer "client_id"
     t.boolean "paid"
     t.string "equipment"
     t.integer "user_id"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

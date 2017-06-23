@@ -17,10 +17,9 @@ end
 
 10.times do 
 	Client.create(
-		firstname: Faker::Name.first_name,
-		lastname: Faker::Name.last_name,
-		streetname: Faker::Address.street_address,
-		aptnumber: Faker::Address.secondary_address,
+		fullname: Faker::Name.name,
+		street: Faker::Address.street_address,
+		apt: Faker::Address.secondary_address,
 		borough: "Brooklyn",
 		notes: Faker::Lorem.sentence(1),
 		user_id: rand(1..10)
@@ -33,10 +32,10 @@ end
 		name: Faker::Lorem.word,
 		jobdate: "10-19-2017",
 		payrate: rand(1..50),
-		client_id: rand(1..10),
 		paid: [true, false].sample,
 		equipment: Faker::Lorem.sentence(1),
-		user_id: rand(1..10)
+		user_id: rand(1..10),
+		client_id: rand(1..10)
 		)
 end
 
