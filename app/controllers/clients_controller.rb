@@ -12,13 +12,20 @@ class ClientsController < ApplicationController
 		if @client.save
 			redirect_to client_path(@client)
 		else
-			
+
 			redirect_to new_client_path
 		end
 	end
 
 	def show
 		@client = Client.find_by_id(params[:id])
+	end
+
+
+	def destroy
+		@client = Client.find_by_id(params[:id])
+		@client.destroy
+		redirect_to clients_path
 	end
 
 
