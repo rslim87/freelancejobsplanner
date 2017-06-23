@@ -1,6 +1,6 @@
 	Create a New Client:
 	<br>
-	<%= fields_for client do |f| %>
+	<%= form_for client do |f| %>
 		Full Name:
 		<%= f.text_field :fullname %>
 		<br>
@@ -17,5 +17,5 @@
 		<%= f.text_area :notes %>
 		<br>
 		<br>
-		<%= f.submit %>
+		<%= f.submit "Create Client" %>
 	<% end %>

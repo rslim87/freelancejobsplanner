@@ -1,0 +1,15 @@
+<h3><%= @client.fullname %>'s info</h3>
+
+Street Address: <%= @client.street %>
+<br>
+Apt/Building: <%= @client.apt %>
+<br>
+Borough: <%= @client.borough %>
+<br.
+Notes: <%= @client.notes %>
+
+<br>
+<br>
+<%= link_to "Edit Client", edit_client_path(@client) %>
+<br>
+<%= link_to "Delete Client", client_path(@client), :method => :delete %>
