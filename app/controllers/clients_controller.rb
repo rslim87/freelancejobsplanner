@@ -28,6 +28,20 @@ class ClientsController < ApplicationController
 		redirect_to clients_path
 	end
 
+	def edit
+		@client = Client.find_by_id(params[:id])
+	end
+
+	def update
+		@client = Client.find_by_id(params[:id])
+		if @client.update(client_params)
+			redirect_to client_path(@client)
+		else
+			flash[:danger] = "couldn't update client"
+			redirect_to edit_client_path(@client)
+		end
+	end
+
 
 
 	private
