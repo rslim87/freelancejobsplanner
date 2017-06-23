@@ -7,7 +7,7 @@ class CreateClients < ActiveRecord::Migration[5.1]
     	t.string :borough 
     	t.string :notes
     	t.integer :user_id
-        t.integer :job_id
+
     end
   end
 end

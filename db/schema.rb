@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20170621145637) do
     t.string "borough"
     t.string "notes"
     t.integer "user_id"
-    t.integer "job_id"
   end
 
   create_table "job_categories", force: :cascade do |t|

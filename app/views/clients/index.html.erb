@@ -1,0 +1,4 @@
+<h3>List of all your client</h3>
+<% @clients.each do |client| %>
+	<%= link_to "#{client.fullname}", client_path(client) %>
+<% end %>
