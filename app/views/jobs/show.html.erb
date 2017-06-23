@@ -5,11 +5,16 @@
 	<br>
 	Pay rate: $<%= @job.payrate %>
 	<br>
-	Category: <%= @job.category.title %>
+	Category: 
+	<% @job.categories.each do |category| %>
+		<%= category.title  %>
+	<% end %>
 	<br>
 	Paid: <%= @job.paid %>
 	<br>
 	Equipment: <%= @job.equipment %>
+	<br>
+	Client: <%= link_to "#{@job.client.fullname}", client_path(@job.client) %>
 </div>
 
 <div>

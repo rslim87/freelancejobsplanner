@@ -41,15 +41,13 @@
 	<br>
 	<br>
 	Client:
-	<%= f.collection_check_boxes :client_id, Client.all, :id, :fullname  %>
+	<% @clients.each do |client| %>
+		<%= f.radio_button :client_id, client.id %>
+		<%= f.label :client_id, client.fullname %>
+	<% end %>
 	<br>
 	<br>	
-	Create a New Client:
-	<br>
-	<%= f.fields_for :client do |client_field| %>
-		Full Name:
-		<%= client_field.text_field :fullname %>
-	<% end %>
+
 	<br>
 	<br>
 	<%= f.submit %>

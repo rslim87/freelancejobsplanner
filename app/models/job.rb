@@ -1,5 +1,5 @@
 class Job < ApplicationRecord
-	has_one :client
+	belongs_to :client, inverse_of: :jobs
 	belongs_to :user
 	has_many :job_categories
 	has_many :categories, through: :job_categories
@@ -9,12 +9,8 @@ class Job < ApplicationRecord
 
 
 
-  def categories_attributes=(category_attributes)
-  	category_attributes.values.each do |category_attribute|
-  		category = Category.find_or_create_by(category_attribute)
-  		self.categories << category
-  	end
-  end
+
+
 
 
 end

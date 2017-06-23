@@ -1,3 +1,5 @@
+require 'pry'
+
 class JobsController < ApplicationController
 	
 	
@@ -5,19 +7,22 @@ class JobsController < ApplicationController
 		@jobs = Job.all
 	end
 
+
 	def new
 		@job = Job.new
-		@job.build_client
+		@clients = Client.all
 	end
 
 	def create
+
+
 		@job = current_user.jobs.build(job_params)
 
 		if @job.save
 			redirect_to job_path(@job)
 		else
-			flash.now[:danger] = "Couldn't create new job" 
-			render :new
+			flash[:danger] = "Couldn't create new job" 
+			 redirect_to new_job_path
 		end
 	end
 
@@ -43,7 +48,7 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:name, :jobdate, :payrate, :paid, :equipment, category_id: [], categories_attributes:[:title] )
+		params.require(:job).permit(:client_id, :name, :jobdate, :payrate, :paid, :equipment, category_ids: [], categories_attributes:[:title])
 	end
 
 	def require_same_user
