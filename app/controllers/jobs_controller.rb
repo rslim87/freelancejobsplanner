@@ -52,6 +52,12 @@ class JobsController < ApplicationController
 		redirect_to jobs_path
 	end
 
+	def borough
+
+		@borough_sorted = Client.sort_by_borough	
+
+	end
+
 	private
 
 	def job_params

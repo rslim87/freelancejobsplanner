@@ -12,8 +12,14 @@ Rails.application.routes.draw do
   	post 'login', to: 'sessions#create'
   	delete 'logout', to: 'sessions#destroy'
 
-  	resources :jobs
+  	resources :jobs 
 
-  	resources :clients
+  	resources :clients do
+  		resources :job, only: [:index]
+  	end
+
+  	resources :categories
+
+  	get '/borough' => 'clients#borough'
 
 end

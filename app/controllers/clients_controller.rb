@@ -42,6 +42,11 @@ class ClientsController < ApplicationController
 		end
 	end
 
+	def borough
+
+		@borough_sorted = Client.sort_by_borough	
+
+	end
 
 
 	private

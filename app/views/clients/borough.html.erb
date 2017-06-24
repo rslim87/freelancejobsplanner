@@ -1,0 +1,14 @@
+<h3>list clients by borough</h3>
+
+<h5>If jobs were booked with a client, such jobs will also be shown </h5>
+
+<% @borough_sorted.each do |client| %>
+
+	<%= client.borough %>
+	<%= link_to "#{client.fullname}", client_path(client)  %>  |
+	<% client.jobs.each do |job| %>
+		<%= link_to "#{job.name}", job_path(job) %> | 
+	<% end %>	
+	<br>
+	<br>
+<% end %>
