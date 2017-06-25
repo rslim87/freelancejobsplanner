@@ -1,6 +1,6 @@
 
 
-<%= form_for @job do |f| %>
+<%= form_for job do |f| %>
 	<%= f.label :name %>:
 	<%= f.text_field :name %>
 	<br>
@@ -21,19 +21,16 @@
 	<%= f.text_area :equipment %>
 	<br>
 	<br>
-	Category:
-	<%= f.collection_check_boxes :category_ids, Category.all, :id, :title %>
-	<br>
-	<br>
-	Create a New Category:
-	<br>
-	<%= f.fields_for :categories, @job.categories.build do |categories_fields| %>
-		Title:<%= categories_fields.text_field :title %>
+	<%= f.fields_for :job_categories, @categories do |job_category| %>
+	Category:  <%= job_category.collection_select :category_ids, Category.all, :id, :title %>
+	<%= job_category.fields_for :category, job.categories.build do |category| %>
+	Or Create New Category:<%= category.text_field :title %>
+	<% end %>
 	<% end %>
 	<br>
 	<br>
 	Client:
-	<% @clients.each do |client| %>
+	<% clients.each do |client| %>
 		<%= f.radio_button :client_id, client.id %>
 		<%= f.label :client_id, client.fullname %>
 	<% end %>

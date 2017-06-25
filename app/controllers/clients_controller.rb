@@ -44,7 +44,7 @@ class ClientsController < ApplicationController
 
 	def borough
 
-		@borough_sorted = Client.sort_by_borough	
+		@borough_sorted = current_user.clients.sort_by_borough	
 
 	end
 

@@ -1,8 +1,15 @@
 <h3>List of all your client</h3>
+
+<%= link_to "See all you Clients by Borough", borough_path %>
+<br>
+<br>
 <% @clients.each do |client| %>
 	<%= link_to "#{client.fullname}", client_path(client) %>
+	<br>
 <% end %>
 
 <br>
+<br>
+
 
 <%= link_to "Add a Client", new_client_path %>
