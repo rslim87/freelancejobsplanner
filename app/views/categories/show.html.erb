@@ -1,0 +1,12 @@
+<h3> <%= @category.title %>'s Jobs</h3>
+
+<% @category.jobs.each do |job| %>
+	<% if job.user_id == current_user.id %>
+		<%= link_to job.name, job_path(job) %>
+	<% end %>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to "Add a Job", new_job_path %>

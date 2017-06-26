@@ -1,7 +1,7 @@
 <% if current_page?(client_jobs_path(:client_id)) %>
-	<h3>Here are all your jobs</h3>
-<% else %>
 	<h3> Here are all the jobs booked with <%= @client %></h3>
+<% else %>
+	<h3>Here are all your jobs</h3>
 <% end %>
 
 <% @jobs.each do |job| %>
@@ -9,3 +9,10 @@
 		<li><%= link_to "Go to #{job.name}", job_path(job) %></li>
 	</ul>
 <% end %>
+
+<br>
+<br>
+
+<%= link_to "Add a Job", new_job_path %>
+<br>
+<%= link_to "See all Jobs by Category", categories_path %>

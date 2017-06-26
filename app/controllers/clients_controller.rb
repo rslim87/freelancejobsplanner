@@ -1,4 +1,8 @@
 class ClientsController < ApplicationController
+	before_action :set_client, only: [:show, :destroy, :edit, :update]
+	before_action :require_same_user, except: [:new, :index, :create]
+	before_action :require_login, only: [:new, :index, :create]
+
 	def index
 		@clients = current_user.clients
 	end
@@ -18,22 +22,18 @@ class ClientsController < ApplicationController
 	end
 
 	def show
-		@client = Client.find_by_id(params[:id])
 	end
 
 
 	def destroy
-		@client = Client.find_by_id(params[:id])
 		@client.destroy
 		redirect_to clients_path
 	end
 
 	def edit
-		@client = Client.find_by_id(params[:id])
 	end
 
 	def update
-		@client = Client.find_by_id(params[:id])
 		if @client.update(client_params)
 			redirect_to client_path(@client)
 		else
@@ -43,9 +43,7 @@ class ClientsController < ApplicationController
 	end
 
 	def borough
-
 		@borough_sorted = current_user.clients.sort_by_borough	
-
 	end
 
 
@@ -53,6 +51,24 @@ class ClientsController < ApplicationController
 
 	def client_params
 		params.require(:client).permit(:fullname, :street, :apt, :borough, :notes)
+	end
+
+	def set_client
+		@client = Client.find_by_id(params[:id])
+	end
+
+	def require_same_user
+		if current_user != @client.user
+			flash[:danger] = "You are not the user that are associated with this page. Only logged in and associated user can see this page."
+			redirect_to root_path
+		end
+	end
+
+	def require_login
+		if !logged_in?
+			flash[:danger] = "You need to be logged in to see this page"
+			redirect_to login_path
+		end
 	end
 
 end

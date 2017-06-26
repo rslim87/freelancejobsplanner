@@ -1,0 +1,7 @@
+<h3> All Job Categories: </h3>
+
+<% @categories.each do |category| %>
+<ul>
+	<li><%= link_to category.title, category_path(category) %></li>
+</ul>
+<% end %>

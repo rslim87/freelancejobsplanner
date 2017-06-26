@@ -5,6 +5,13 @@ class User < ApplicationRecord
 
 	has_secure_password
 
+	validates :password, presence: true,
+                         confirmation: true,
+                         length: {minimum: 8, message: "must be at least 8 characters"}
+    validates :email, :name, presence: true
+    validates :email, uniqueness: true
+    
+
 	require 'securerandom'
 	
 	def self.create_with_omniauth(auth)

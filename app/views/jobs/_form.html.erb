@@ -21,11 +21,11 @@
 	<%= f.text_area :equipment %>
 	<br>
 	<br>
-	<%= f.fields_for :job_categories, @categories do |job_category| %>
-	Category:  <%= job_category.collection_select :category_ids, Category.all, :id, :title %>
-	<%= job_category.fields_for :category, job.categories.build do |category| %>
-	Or Create New Category:<%= category.text_field :title %>
-	<% end %>
+	Category:  <%= f.collection_select :category_ids, Category.all, :id, :title %>
+	<%= f.fields_for :categories, @job.categories.build do |categories_fields| %>
+
+	Or Create New Category:<%= categories_fields.text_field :title %>
+
 	<% end %>
 	<br>
 	<br>

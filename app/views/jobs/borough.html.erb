@@ -1,0 +1,12 @@
+<h3>List Clients by Borough</h3>
+
+<% @borough_sorted.each do |client| %>
+
+	<%= client.borough %>
+	<%= client.fullname  %>  |
+	<% client.jobs.each do |job| %>
+		<%= job.name %> | 
+	<% end %>	
+	<br>
+	<br>
+<% end %>

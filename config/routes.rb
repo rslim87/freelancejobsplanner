@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   		resources :jobs, only: [:index]
   	end
 
-  	resources :categories
+  	resources :categories, only: [:index, :show]
 
   	get '/borough' => 'clients#borough'
 

@@ -4,8 +4,16 @@ class Job < ApplicationRecord
 	has_many :job_categories
 	has_many :categories, through: :job_categories
 
+	validates :name, :jobdate, :payrate, presence: true
+	validates :name, uniqueness: true
+	
 	accepts_nested_attributes_for :categories
-	accepts_nested_attributes_for :client
+	accepts_nested_attributes_for :job_categories
 
-
+	def categories_attributes=(category_attributes)
+    	category_attributes.values.each do |category_attribute|
+    		category = Category.find_or_create_by(category_attribute)
+      		self.categories << category
+    	end
+  	end
 end
