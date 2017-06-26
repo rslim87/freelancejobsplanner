@@ -1,4 +1,8 @@
-<h3>Here are all your jobs</h3>
+<% if current_page?(client_jobs_path(:client_id)) %>
+	<h3>Here are all your jobs</h3>
+<% else %>
+	<h3> Here are all the jobs booked with <%= @client %></h3>
+<% end %>
 
 <% @jobs.each do |job| %>
 	<ul>

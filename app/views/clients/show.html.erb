@@ -9,7 +9,16 @@ Borough: <%= @client.borough %>
 Notes: <%= @client.notes %>
 
 <br>
+
+Jobs
+<%= link_to "See all jobs for this client:", client_jobs_path(@client) %>
+
+<br>
 <br>
 <%= link_to "Edit Client", edit_client_path(@client) %>
 <br>
 <%= link_to "Delete Client", client_path(@client), :method => :delete %>
+<br>
+<%= link_to "See all Clients", clients_path %>
+<br>
+<%= link_to "Add a Job", new_job_path %>

@@ -4,7 +4,12 @@ class JobsController < ApplicationController
 	
 	
 	def index
-		@jobs = current_user.jobs
+		if params[:client_id]
+			@jobs = Client.find(params[:client_id]).jobs
+			@client = Client.find(params[:client_id]).fullname
+		else
+			@jobs = current_user.jobs
+		end
 	end
 
 
@@ -52,11 +57,7 @@ class JobsController < ApplicationController
 		redirect_to jobs_path
 	end
 
-	def borough
 
-		@borough_sorted = Client.sort_by_borough	
-
-	end
 
 	private
 

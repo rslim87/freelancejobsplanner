@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   	resources :jobs 
 
   	resources :clients do
-  		resources :job, only: [:index]
+  		resources :jobs, only: [:index]
   	end
 
   	resources :categories
