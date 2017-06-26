@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is used by freelancers to keep track of their jobs and clients.
 
-Things you may want to cover:
+To use this app:
 
-* Ruby version
+1. Clone or download the app
 
-* System dependencies
+2. Run 'bundle install'
 
-* Configuration
+3. Run 'rake db:migrate'
 
-* Database creation
+3. Run 'rails s'
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. Open up your browser and visit http://localhost:3000
