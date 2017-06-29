@@ -30,7 +30,7 @@ end
 10.times do 
 	Job.create(
 		name: Faker::Lorem.word,
-		jobdate: "10-19-2017",
+		jobdate: Faker::Time.forward(90, :morning),
 		payrate: rand(1..50),
 		paid: [true, false].sample,
 		equipment: Faker::Lorem.sentence(1),

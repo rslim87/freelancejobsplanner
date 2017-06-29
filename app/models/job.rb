@@ -10,6 +10,8 @@ class Job < ApplicationRecord
 
 	accepts_nested_attributes_for :categories
 
+	scope :jobdate_sort, -> { order("JOBDATE ASC")}
+
 
 	def categories_attributes=(category_attributes)
     	category_attributes.values.each do |category_attribute|
