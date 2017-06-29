@@ -9,7 +9,7 @@ class User < ApplicationRecord
                          confirmation: true,
                          length: {minimum: 8, message: "must be at least 8 characters"}
     validates :email, :name, presence: true
-    validates :email, uniqueness: true
+
     
 
 	require 'securerandom'
@@ -19,6 +19,7 @@ class User < ApplicationRecord
 	        user.provider = auth.provider
 	        user.uid = auth.uid
 	        user.name = auth.info.name
+	        user.email = auth.info.email
 	        user.password = SecureRandom.urlsafe_base64
 	        user.oauth_token = auth.credentials.token
       		user.oauth_expires_at = Time.at(auth.credentials.expires_at)

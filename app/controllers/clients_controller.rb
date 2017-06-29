@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
 	before_action :set_client, only: [:show, :destroy, :edit, :update]
-	before_action :require_same_user, except: [:new, :index, :create]
+	before_action :require_same_user, except: [:new, :index, :create, :borough]
 	before_action :require_login, only: [:new, :index, :create]
 
 	def index

@@ -1,3 +1,9 @@
+<ul>
+	<% @user.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+
 <h1>Edit your Info</h1>
 
 <%= render 'form', user: @user %>

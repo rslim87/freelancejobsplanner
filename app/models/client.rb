@@ -2,8 +2,8 @@ class Client < ApplicationRecord
 	belongs_to :user
 	has_many :jobs
 
-	validates :name, :streetaddress, :borough, presence: true
-	validates :name, uniqueness: true
+	validates :fullname, :street, :borough, presence: true
+	validates :fullname, uniqueness: true
 
 	scope :sort_by_borough, -> { order("BOROUGH ASC")}
 

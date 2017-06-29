@@ -7,7 +7,7 @@ class JobsController < ApplicationController
 	def index
 		if params[:client_id]
 			@jobs = Client.find(params[:client_id]).jobs
-			@client = Client.find(params[:client_id]).fullname
+			@client = Client.find(params[:client_id])
 		else
 			@jobs = current_user.jobs
 		end
@@ -20,11 +20,11 @@ class JobsController < ApplicationController
 
 	def create
 		@job = current_user.jobs.build(job_params)
-
-		if @job.save
+		if @job.save!
 			redirect_to job_path(@job)
 		else
-			 redirect_to :new
+			flash[:danger] = "Couldn't create job" 
+			redirect_to new_job_path
 		end
 	end
 
@@ -55,7 +55,7 @@ class JobsController < ApplicationController
 	private
 
 	def job_params
-		params.require(:job).permit(:client_id, :name, :jobdate, :payrate, :paid, :equipment, :category_ids, category_ids: [], categories_attributes:[:id, :title])
+		params.require(:job).permit(:client_id, :name, :jobdate, :payrate, :paid, :equipment, :category_ids, category_ids: [], categories_attributes: [:title])
 	end
 
 
