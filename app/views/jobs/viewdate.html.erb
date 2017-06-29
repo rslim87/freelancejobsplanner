@@ -1,7 +1,7 @@
-<% @jobs.each do |job| %>
+<% @job_sorted.each do |job| %>
 	Name of Job: <%= job.name %>
 	|
-	Date and Time of Job: <%= job.jobdate %>
+	Date and Time of Job: <%= job.readable_jobdate %>
 	<br>
 	<br>
 <% end %>

@@ -51,7 +51,7 @@ class JobsController < ApplicationController
 	end
 
 	def viewdate
-		@jobs = Job.all
+		@job_sorted = current_user.jobs.jobdate_sort
 	end
 
 

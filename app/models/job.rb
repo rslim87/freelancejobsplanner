@@ -12,6 +12,12 @@ class Job < ApplicationRecord
 
 	scope :jobdate_sort, -> { order("JOBDATE ASC")}
 
+	
+
+	def readable_jobdate
+		self.jobdate.strftime("%B %e, %Y at %l:%M %p")
+	end
+
 
 	def categories_attributes=(category_attributes)
     	category_attributes.values.each do |category_attribute|
