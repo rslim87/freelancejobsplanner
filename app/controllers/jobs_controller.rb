@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 	before_action :set_job, only: [:edit, :update, :show, :destroy]
-	before_action :require_same_user, except: [:new, :index, :create]
+	before_action :require_same_user, except: [:new, :index, :create, :viewdate]
 	before_action :require_login, only: [:new, :index, :create]
 	
 	
@@ -48,6 +48,10 @@ class JobsController < ApplicationController
 	def destroy
 		@job.destroy
 		redirect_to jobs_path
+	end
+
+	def viewdate
+		@jobs = Job.all
 	end
 
 
