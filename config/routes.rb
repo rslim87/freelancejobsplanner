@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   	get '/borough' => 'clients#borough'
 
+    get '/jobsortdate' => 'jobs#viewdate' 
+
 end
