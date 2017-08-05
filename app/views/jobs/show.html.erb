@@ -20,6 +20,7 @@
 <div>
 <%= link_to "Edit Job", edit_job_path(@job) %>
 <%= link_to "Delete Job", job_path(@job), :method => :delete %>
+<a href="#" class="js-next" data-id="<%=@job.id%>">Next...</a>
 <div>
 
 <div style="margin-top: 15px">
