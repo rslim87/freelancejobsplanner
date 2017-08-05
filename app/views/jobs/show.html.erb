@@ -20,5 +20,13 @@
 <div>
 <%= link_to "Edit Job", edit_job_path(@job) %>
 <%= link_to "Delete Job", job_path(@job), :method => :delete %>
-<%= link_to "See all Jobs", jobs_path %>
+<div>
+
+<div style="margin-top: 15px">
+<%= link_to "See all Jobs", jobs_path, class: 'allJobs' %>
+</div>
+
+<div class="allJobs">
+	<ul>
+	</ul>
 </div>

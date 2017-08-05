@@ -11,6 +11,10 @@ class JobsController < ApplicationController
 		else
 			@jobs = current_user.jobs
 		end
+		respond_to do |format|
+			format.html { render :index }
+			format.json { render json: @jobs }
+		end
 	end
 
 	def new
