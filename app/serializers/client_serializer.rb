@@ -1,3 +1,3 @@
 class ClientSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :fullname, :street, :apt, :borough, :notes, :user_id
 end
