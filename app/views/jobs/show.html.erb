@@ -1,26 +1,30 @@
-<h3><%= @job.name %>'s information:</h3>
+<h3 class = "jobName"><%= @job.name %>'s information:</h3>
 
 <div>
-	Date  and Time of the job: <%= @job.readable_jobdate %>
-	<br>
-	Pay rate: $<%= @job.payrate %>
-	<br>
+	<p class = "jobDate">Date  and Time of the job: <%= @job.readable_jobdate %></p>
+	
+	<p class = "jobPay">Pay rate: $<%= @job.payrate %></p>
+	
+	<p class = "jobCategories">
 	Category: 
 	<% @job.categories.each do |category| %>
-		<%= category.title  %>
+		<ul>
+			<li><%= category.title  %></li>
+		</ul>
 	<% end %>
-	<br>
-	Paid: <%= @job.paid %>
-	<br>
-	Equipment: <%= @job.equipment %>
-	<br>
-	Client: <%= link_to "#{@job.client.fullname}", client_path(@job.client) %>
+	</p>
+
+	<p class = "jobPaid">Paid: <%= @job.paid %></p>
+	
+	<p class = "jobEqupiment">Equipment: <%= @job.equipment %></p>
+	
+	<p class = "jobClient">Client: <%= link_to "#{@job.client.fullname}", client_path(@job.client) %></p>
 </div>
 
 <div>
 <%= link_to "Edit Job", edit_job_path(@job) %>
 <%= link_to "Delete Job", job_path(@job), :method => :delete %>
-<a href="#" class="js-next" data-id="<%=@job.id%>">Next...</a>
+<a href="#" class="js-next" data-id="<%=@job.id%>">Next Job</a>
 <div>
 
 <div style="margin-top: 15px">

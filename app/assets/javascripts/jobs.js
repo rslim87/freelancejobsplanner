@@ -22,3 +22,12 @@ $(document).on("click", "a.allJobs", function(event){
 
 
 
+$(document).on("click", ".js-next", function(event){
+	event.preventDefault();
+	var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+	$.get("/jobs/" + nextId + ".json", function(data){
+		$(".jobName").text(data["name"])
+		$(".jobPay").text(data["payrate"])
+		console.log(data)
+	})
+})
