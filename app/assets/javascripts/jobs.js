@@ -1,4 +1,46 @@
 
+var d = jobdate.replace(/[T]/g, ' ')
+d = d.split('.')[0]
+d = new Date(d);
+
+var m_names = new Array("January", "February", "March", 
+"April", "May", "June", "July", "August", "September", 
+"October", "November", "December");
+
+var curr_date = d.getDate();
+var curr_month = d.getMonth();
+var curr_year = d.getFullYear();
+var a_p = "";
+var curr_hour = d.getHours();
+if (curr_hour < 12)
+   {
+   a_p = "AM";
+   }
+else
+   {
+   a_p = "PM";
+   }
+if (curr_hour == 0)
+   {
+   curr_hour = 12;
+   }
+if (curr_hour > 12)
+   {
+   curr_hour = curr_hour - 12;
+   }
+
+var curr_min = d.getMinutes();
+
+curr_min = curr_min + "";
+
+if (curr_min.length == 1)
+   {
+   curr_min = "0" + curr_min;
+   }
+
+var final_date = m_names[curr_month] + " " + curr_date + ", " + curr_year + " at " + curr_hour + ":" + curr_min + a_p
+
+
 $(document).on("click", "a.allJobs", function(event){
 	event.preventDefault(); 
 	$("div.allJobs").prepend('List of all Jobs:')
@@ -26,8 +68,10 @@ $(document).on("click", ".js-next", function(event){
 	event.preventDefault();
 	var nextId = parseInt($(".js-next").attr("data-id")) + 1;
 	$.get("/jobs/" + nextId + ".json", function(data){
-		$(".jobName").text(data["name"])
-		$(".jobPay").text(data["payrate"])
+		$(".jobName").text(data["name"] + "'s information:")
+		$(".jobDate").text("Date and Time: " + data["jobdate"])
+		$(".jobPay").text("Pay rate: $" + data["payrate"])
 		console.log(data)
 	})
 })
+
