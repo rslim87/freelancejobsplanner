@@ -9,7 +9,7 @@ function Job(name, jobdate, payrate, categories, paid, equipment, client){
 	this.client = client
 }
 
-
+Job.prototype.dateAndTime = function(jobdate) {
 	var d = jobdate.replace(/[T]/g, ' ')
 	d = d.split('.')[0]
 	d = new Date(d);
@@ -46,7 +46,7 @@ function Job(name, jobdate, payrate, categories, paid, equipment, client){
 
 	return final_date;
 
-
+}
 
 
 
