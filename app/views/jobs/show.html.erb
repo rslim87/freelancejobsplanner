@@ -5,10 +5,10 @@
 	
 	<p class = "jobPay">Pay rate: $<%= @job.payrate %></p>
 	
-	<p class = "jobCategories">
+	<p>
 	Category: 
 	<% @job.categories.each do |category| %>
-		<ul>
+		<ul class = "jobCategories">
 			<li><%= category.title  %></li>
 		</ul>
 	<% end %>
