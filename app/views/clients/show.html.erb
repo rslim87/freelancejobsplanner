@@ -1,24 +1,29 @@
-<h3><%= @client.fullname %>'s info</h3>
+<h3 style="margin-bottom: 5px"><%= @client.fullname %>'s info</h3>
 
-Street Address: <%= @client.street %>
-<br>
-Apt/Building: <%= @client.apt %>
-<br>
-Borough: <%= @client.borough %>
-<br>
-Notes: <%= @client.notes %>
+<div style="display: inline-block">
+	<%= link_to "Edit Client", edit_client_path(@client) %>
 
+	<%= link_to "Delete Client", client_path(@client), :method => :delete %>
+
+	<%= link_to "See all Clients", clients_path %>
+</div>
+
+
+<div style="margin-top: 15px">
+	Street Address: <%= @client.street %>
+	<br>
+	Apt/Building: <%= @client.apt %>
+	<br>
+	Borough: <%= @client.borough %>
+	<br>
+	Notes: <%= @client.notes %>
+</div>
 <br>
 
-Jobs
-<%= link_to "See all jobs for this client:", client_jobs_path(@client) %>
 
-<br>
-<br>
-<%= link_to "Edit Client", edit_client_path(@client) %>
-<br>
-<%= link_to "Delete Client", client_path(@client), :method => :delete %>
-<br>
-<%= link_to "See all Clients", clients_path %>
-<br>
+<%= link_to "See all jobs for this client:", client_jobs_path(@client), class: "jobs" %>
+
+<div class="displayjobs">
+</div>
+
 <%= link_to "Add a Job", new_job_path %>

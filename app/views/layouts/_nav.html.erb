@@ -1,5 +1,5 @@
 <nav class="">
-    <ul>
+    <ul id="nav">
     		<li> <%= link_to "Home", root_path %> </li>
     		<% if logged_in? %>
     		<li> Current user: <%= link_to current_user.name, user_path(current_user) %>
