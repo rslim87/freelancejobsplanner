@@ -83,12 +83,20 @@ $(document).on("click", "a.allJobs", function(event){
 
 $(document).on("click", ".js-next", function(event){
 	event.preventDefault();
+	$(".jobCategories").empty()
 	var nextId = parseInt($(".js-next").attr("data-id")) + 1;
 	$.get("/jobs/" + nextId + ".json", function(data){
 		job = new Job(data.name, data.jobdate, data.payrate, data.categories, data.paid, data.equipment, data.client.fullname)
 		$(".jobName").text(job.name + "'s information:")
 		$(".jobDate").text("Date and Time: " + job.dateAndTime(data.jobdate))
 		$(".jobPay").text("Pay rate: $" + job.payrate)
+		$.each(job.category(data.categories), function(index, value){
+			$(".jobCategories").append('<li>' + value + '</li>')
+		})
+		console.log(data)
+		console.log(job.category(data.categories))
+
+
 	})
 })
 
