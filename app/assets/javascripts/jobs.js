@@ -48,7 +48,14 @@ Job.prototype.dateAndTime = function(jobdate) {
 
 }
 
+Job.prototype.category = function(categories) {
+	categoriescollection = [];
+	for (i = 0; i < categories.length; i++) {
+		categoriescollection.push(categories[i].title)
 
+	};
+	return categoriescollection
+};
 
 
 $(document).on("click", "a.allJobs", function(event){
