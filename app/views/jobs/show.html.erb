@@ -7,16 +7,18 @@
 	
 	<p>
 	Category: 
-	<% @job.categories.each do |category| %>
-		<ul class = "jobCategories">
+	<ul class = "jobCategories">
+		<% @job.categories.each do |category| %>
+		
 			<li><%= category.title  %></li>
-		</ul>
-	<% end %>
+
+		<% end %>
+	</ul>
 	</p>
 
 	<p class = "jobPaid">Paid: <%= @job.paid %></p>
 	
-	<p class = "jobEqupiment">Equipment: <%= @job.equipment %></p>
+	<p class = "jobEquipment">Equipment: <%= @job.equipment %></p>
 	
 	<p class = "jobClient">Client: <%= link_to "#{@job.client.fullname}", client_path(@job.client) %></p>
 </div>
