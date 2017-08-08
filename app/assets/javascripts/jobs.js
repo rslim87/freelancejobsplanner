@@ -99,7 +99,6 @@ $(document).on("click", ".js-next", function(event){
 		$(".jobEquipment").text("Equipment: " + data.equipment)
 		$(".jobClient").html("Client: " + "<a href =" + "/clients/" + data.client.id + ">" + data.client.fullname + "</a>")
 		$(".js-next").attr("data-id", data.id);
-
 	})
 
 })
@@ -107,3 +106,17 @@ $(document).on("click", ".js-next", function(event){
 $(document).ajaxError(function(){
     alert("There are no more jobs");
 });
+
+$(function() {
+	$('body').on("submit", ".jobAdding", function(event){
+		event.preventDefault();
+		console.log("test")
+		var values = $(this).serialize();
+		console.log(this)
+		var jobs = $.post('/jobs', values);
+		jobs.done(function(data){
+			console.log(data)
+		})
+	})
+})
+

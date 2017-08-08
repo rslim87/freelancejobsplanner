@@ -25,7 +25,7 @@ class JobsController < ApplicationController
 	def create
 		@job = current_user.jobs.build(job_params)
 		if @job.save!
-			redirect_to job_path(@job)
+			 render json: @job 
 		else
 			flash[:danger] = "Couldn't create job" 
 			redirect_to new_job_path

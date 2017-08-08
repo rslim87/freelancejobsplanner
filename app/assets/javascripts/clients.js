@@ -18,3 +18,4 @@ $(document).on("click", "a.addJob", function(event){
 	})
 
 })
+

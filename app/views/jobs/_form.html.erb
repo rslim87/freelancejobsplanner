@@ -1,34 +1,34 @@
 
 
-<%= form_for job, :remote => true do |f| %>
-
+<%= form_for job do |f| %>
+	
+	<div>
 	<%= f.label :name %>:
 	<%= f.text_field :name %>
-	<br>
-	<br>
+	</div>
+	<div>
 	Date and Time of the Job (Format: 2017/09/08 11:18:00):
 	<%= f.text_field :jobdate %>
-	<br>
-	<br>
+	</div>
+	<div>
 	<%= f.label :paid %>:
 	<%= f.check_box :paid %>
-	<br>
-	<br>
+	</div>
+	<div>
 	<%= f.label :payrate %>:
 	<%= f.number_field :payrate %>
-	<br>
-	<br>
+	</div>
+	<div>
 	Equipment needed:
 	<%= f.text_area :equipment %>
-	<br>
-	<br>
+	</div>
+	</div>
 	<%= f.collection_check_boxes :category_ids, Category.all, :id, :title, include_hidden: false %>
 		<%= f.fields_for :categories, job.categories.build do |categories_fields| %>
 	  	<br>
     	Or Create a new Category:<%= categories_fields.text_field :title %>
   		<% end %>
-	<br>
-	<br>
+	</div>
 	Client:
 	<% clients.each do |client| %>
 		<%= f.radio_button :client_id, client.id %>
