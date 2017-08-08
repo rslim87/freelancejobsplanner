@@ -1,6 +1,6 @@
 
 
-<%= form_for job do |f| %>
+<%= form_for job, :remote => true do |f| %>
 
 	<%= f.label :name %>:
 	<%= f.text_field :name %>
