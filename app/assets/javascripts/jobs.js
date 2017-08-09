@@ -83,8 +83,6 @@ $(document).on("click", "a.allJobs", function(event){
 
 $(document).on("click", ".js-next", function(event){
 	event.preventDefault();
-
-
 	var nextId = parseInt($(".js-next").attr("data-id")) + 1;
 	$.get("/jobs/" + nextId + ".json", function(data){
 		job = new Job(data.id, data.name, data.jobdate, data.payrate, data.categories, data.paid, data.equipment, data.client.id, data.client.fullname)
@@ -110,13 +108,25 @@ $(document).ajaxError(function(){
 $(function() {
 	$('body').on("submit", ".jobAdding", function(event){
 		event.preventDefault();
-		console.log("test")
+
 		var values = $(this).serialize();
-		console.log(this)
-		var jobs = $.post('/jobs', values);
+	
+		var jobs = $.post("/jobs", values);
 		jobs.done(function(data){
-			console.log(data)
+		job = new Job(data.id, data.name, data.jobdate, data.payrate, data.categories, data.paid, data.equipment, data.client.id, data.client.fullname)
+		$(".jobName").text(data.name + "'s information:")
+		$(".jobDate").text("Date and Time: " + job.dateAndTime(data.jobdate))
+		$(".jobPay").text("Pay rate: $" + data.payrate)
+		$(".jobCategories").empty()
+		$.each(job.category(data.categories), function(index, value){
+			$(".jobCategories").append('<li>' + value + '</li>')
 		})
-	})
-})
+		$(".jobPaid").text("Paid: " + data.paid)
+		$(".jobEquipment").text("Equipment: " + data.equipment)
+		$(".jobClient").html("Client: " + "<a href =" + "/clients/" + data.client.id + ">" + data.client.fullname + "</a>")
+		$(".js-next").attr("data-id", data.id);
+		})
+		$('.jobAdding').empty();
+	 })
+});
 
