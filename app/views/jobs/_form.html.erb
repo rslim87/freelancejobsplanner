@@ -2,41 +2,41 @@
 
 <%= form_for job do |f| %>
 	
-	<div>
+	<div style="margin-bottom: 15px">
 	<%= f.label :name %>:
 	<%= f.text_field :name %>
 	</div>
-	<div>
+	<div style="margin-bottom: 15px">
 	Date and Time of the Job (Format: 2017/09/08 11:18:00):
 	<%= f.text_field :jobdate %>
 	</div>
-	<div>
+	<div style="margin-bottom: 15px">
 	<%= f.label :paid %>:
 	<%= f.check_box :paid %>
 	</div>
-	<div>
+	<div style="margin-bottom: 15px">
 	<%= f.label :payrate %>:
 	<%= f.number_field :payrate %>
 	</div>
-	<div>
+	<div style="margin-bottom: 15px">
 	Equipment needed:
 	<%= f.text_area :equipment %>
 	</div>
-	</div>
+	<div style="margin-bottom: 15px; line-height:20px">
+	Category:
 	<%= f.collection_check_boxes :category_ids, Category.all, :id, :title, include_hidden: false %>
 		<%= f.fields_for :categories, job.categories.build do |categories_fields| %>
 	  	<br>
     	Or Create a new Category:<%= categories_fields.text_field :title %>
   		<% end %>
 	</div>
+	<div style="margin-bottom: 15px; line-height:20px">
 	Client:
 	<% clients.each do |client| %>
 		<%= f.radio_button :client_id, client.id %>
 		<%= f.label :client_id, client.fullname %>
 	<% end %>
-	<br>
-	<br>	
-
+	</div>
 	<br>
 	<br>
 	<%= f.submit %>
