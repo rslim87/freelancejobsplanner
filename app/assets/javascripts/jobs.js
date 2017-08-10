@@ -126,7 +126,8 @@ $(function() {
 		$(".jobClient").html("Client: " + "<a href =" + "/clients/" + data.client.id + ">" + data.client.fullname + "</a>")
 		$(".js-next").attr("data-id", data.id);
 		})
-		$('.jobAdding').empty();
+		$(this).hide();
 	 })
+
 });
 
