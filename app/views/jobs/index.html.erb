@@ -1,3 +1,5 @@
+
+<div class = "first">
 <% if current_page?(jobs_path) %>
 	<h3>Here are all your jobs</h3>
 <% else %>
@@ -9,12 +11,15 @@
 		<li><%= link_to "Go to #{job.name}", job_path(job) %></li>
 	</ul>
 <% end %>
+</div>
 
 <br>
 <br>
 
+<div class = "second">
 <%= link_to "Add a Job", new_job_path %>
 <br>
 <%= link_to "See all Jobs by Category", categories_path %>
 <br>
 <%= link_to "See all Jobs Sorted By Date", jobsortdate_path %>
+</div>
