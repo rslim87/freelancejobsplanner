@@ -121,6 +121,7 @@ $(document).on("click", "a.addJob", function(event){
 $(function() {
 	$('body').on("submit", ".jobAdding", function(event){
 		event.preventDefault();
+		console.log("testing");
 
 		var values = $(this).serialize();
 	
