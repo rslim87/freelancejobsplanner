@@ -1,5 +1,5 @@
 
-<div class = "first">
+<div class = "first" id="jobIndex">
 <% if current_page?(jobs_path) %>
 	<h3>Here are all your jobs</h3>
 <% else %>
@@ -13,13 +13,17 @@
 <% end %>
 </div>
 
+<form class="jobAdding first" style="padding-top: 30px">
+</form>
+
 <br>
 <br>
 
 <div class = "second">
-<%= link_to "Add a Job", new_job_path %>
+<%= link_to "Add a Job", new_job_path, class: "addJob" %>
 <br>
 <%= link_to "See all Jobs by Category", categories_path %>
 <br>
 <%= link_to "See all Jobs Sorted By Date", jobsortdate_path %>
 </div>
+

@@ -105,6 +105,19 @@ $(document).ajaxError(function(){
     alert("There are no more jobs");
 });
 
+$(document).on("click", "a.addJob", function(event){
+	event.preventDefault();
+	$("#jobIndex").remove();
+	$.get('/jobs/new', function(data){
+		// $('.addAJob').html($(data).find('.new_job').html());
+		$('.jobAdding').html($(data).filter('.new_job').html())
+		$('.jobAdding').prepend("<h2> Add a Job </h2>")
+	})
+
+})
+
+
+
 $(function() {
 	$('body').on("submit", ".jobAdding", function(event){
 		event.preventDefault();
