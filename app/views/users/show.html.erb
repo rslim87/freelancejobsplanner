@@ -1,15 +1,19 @@
 <h3>Welcome to your Profile, <%= @user.name %></h3>
 
-<div>
-<%= link_to "See all your jobs", jobs_path %> 
+<div class="second">
+
+<%= link_to "See all your jobs", jobs_path, class: "allJobs" %> 
 <br>
-<%= link_to "See all your clients", clients_path %>
+<%= link_to "See all your clients", clients_path, class: "allClients" %>
 <br>
-<%= link_to "Create a job", new_job_path %>
-<br>
-<%= link_to "Create a client", new_client_path %>
+<%= link_to "Edit your Info", edit_user_path(@user) %>
+
 </div>
 
-<br>
+<div class="allJob first" style="padding-top: 30px">
+	<ul>
+	</ul>
+</div>
 
-<%= link_to "Edit your Info", edit_user_path(@user) %>
+
+

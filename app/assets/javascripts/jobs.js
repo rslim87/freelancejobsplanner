@@ -59,22 +59,25 @@ Job.prototype.category = function(categories) {
 
 
 $(document).on("click", "a.allJobs", function(event){
+
 	event.preventDefault(); 
-	$("div.allJobs").prepend('List of all Jobs:')
+	console.log("testing");
+	$(".allJob").prepend('<h2>List of all Jobs:</h2>')
 	$.get("/jobs" + ".json", function(data){
+		console.log("testing")
 		var jobs = data
 		jobs.forEach(function(job){
 		var link = "<a href =" + "/jobs/" + job["id"] + ">" + job["name"] + "</a>"	
-			$("div.allJobs ul").append('<li>' + link +'</li>')
+			$("div.allJob ul").append('<li>' + link +'</li>')
 		});
-		$("div.allJobs").css({
-			'border': '2px black solid',
+		$("div.allJob").css({
 			'padding': '5px'
 		});	
-		$("div.allJobs ul").css({
-			'list-style': 'none',
+		$("div.allJob ul").css({
+			'line-height': '30px',
 			'padding': '5px',
 			'margin': '5px'
+
 		});
 	});
 });
