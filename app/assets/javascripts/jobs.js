@@ -58,28 +58,30 @@ Job.prototype.category = function(categories) {
 };
 
 
-$(document).on("click", "a.allJobs", function(event){
-
+$(document).on("click", "a.allJobs", function(event){	
 	event.preventDefault(); 
-	console.log("testing");
-	$(".allJob").prepend('<h2>List of all Jobs:</h2>')
-	$.get("/jobs" + ".json", function(data){
-		console.log("testing")
-		var jobs = data
-		jobs.forEach(function(job){
-		var link = "<a href =" + "/jobs/" + job["id"] + ">" + job["name"] + "</a>"	
-			$("div.allJob ul").append('<li>' + link +'</li>')
+	if ( !$.trim( $('.allJob').html() ).length  ) {
+		$(".allJob").append("<ul id='userJob'></ul>")
+		$(".allJob").prepend('<h2>List of all Jobs:</h2>')
+		$.get("/jobs" + ".json", function(data){
+			var jobs = data
+			jobs.forEach(function(job){
+			var link = "<a href =" + "/jobs/" + job["id"] + ">" + job["name"] + "</a>"	
+				$("div.allJob ul").append('<li>' + link +'</li>')
+			});
+			$("div.allJob").css({
+				'padding': '5px'
+			});	
+			$("div.allJob ul").css({
+				'line-height': '30px',
+				'padding': '5px',
+				'margin': '5px'
+			});
 		});
-		$("div.allJob").css({
-			'padding': '5px'
-		});	
-		$("div.allJob ul").css({
-			'line-height': '30px',
-			'padding': '5px',
-			'margin': '5px'
-
-		});
-	});
+	} else {
+		$("#userJob").remove();
+		$("h2").remove();
+	}
 });
 
 
