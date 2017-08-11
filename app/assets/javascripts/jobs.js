@@ -58,28 +58,28 @@ Job.prototype.category = function(categories) {
 };
 
 
-$(document).on("click", "a.allJobs", function(event){	
+$(document).on("click", ".allJobs", function(event){	
 	event.preventDefault(); 
-	if ( !$.trim( $('.allJob').html() ).length  ) {
-		$(".allJob").append("<ul id='userJob'></ul>")
-		$(".allJob").prepend('<h2>List of all Jobs:</h2>')
+	if ( !$.trim( $('.allInfo').html() ).length  ) {
+		$(".allInfo").append("<ul id='userInfo'></ul>")
+		$(".allInfo").prepend('<h2>List of all Jobs:</h2>')
 		$.get("/jobs" + ".json", function(data){
 			var jobs = data
 			jobs.forEach(function(job){
 			var link = "<a href =" + "/jobs/" + job["id"] + ">" + job["name"] + "</a>"	
-				$("div.allJob ul").append('<li>' + link +'</li>')
+				$("div.allInfo ul").append('<li>' + link +'</li>')
 			});
-			$("div.allJob").css({
+			$("div.allInfo").css({
 				'padding': '5px'
 			});	
-			$("div.allJob ul").css({
+			$("div.allInfo ul").css({
 				'line-height': '30px',
 				'padding': '5px',
 				'margin': '5px'
 			});
 		});
 	} else {
-		$("#userJob").remove();
+		$("#userInfo").remove();
 		$("h2").remove();
 	}
 });

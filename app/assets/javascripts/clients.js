@@ -1,21 +1,26 @@
-$(document).on("click", "a.jobs", function(event){
+
+$(document).on("click", ".allClients", function(event){	
 	event.preventDefault(); 
-
-	$("div.displayjobs").prepend('List of all Jobs:')
-	var url = $(this).attr('href')
-	 $.get(url + ".json", function(data){
-	 	$.each(data, function(index){
-	 		$("div.displayjobs ul").append('<li>' + data[index].name + '</li>')
+	if ( !$.trim( $('.allInfo').html() ).length  ) {
+	 	$(".allInfo").append("<ul id='userInfo'></ul>")
+	 	$(".allInfo").prepend('<h2>List of all Clients:</h2>')
+	 	$.get("/clients" + ".json", function(data){
+	 		var clients = data
+	 		clients.forEach(function(client){
+	 		var link = "<a href =" + "/clients/" + client["id"] + ">" + client["fullname"] + "</a>"	
+	 			$(".allInfo ul").append('<li>' + link +'</li>')
+	 		});
+	 		$("div.allInfo").css({
+	 			'padding': '5px'
+	 		});	
+	 		$("div.allInfo ul").css({
+	 			'line-height': '30px',
+	 			'padding': '5px',
+	 			'margin': '5px'
+	 		});
 	 	});
-	});
+	} else {
+	 	$("#userInfo").remove();
+	 	$("h2").remove();
+	}
 });
-
-$(document).on("click", "a.addJob", function(event){
-	event.preventDefault();
-	$.get('/jobs/new', function(data){
-		// $('.addAJob').html($(data).find('.new_job').html());
-		$('.jobAdding').html($(data).filter('.new_job').html())
-	})
-
-})
-
