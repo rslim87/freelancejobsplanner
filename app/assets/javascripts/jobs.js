@@ -1,5 +1,5 @@
 
-function Job(name, jobdate, payrate, categories, paid, equipment, client){
+function Job(name, jobdate, payrate, categories, paid, equipment, client) {
 	this.name = name
 	this.jobdate = jobdate
 	this.payrate = payrate
@@ -106,38 +106,38 @@ $(document).on("click", ".js-next", function(event){
 
 })
 
-$(document).ajaxError(function(){
+$(document).ajaxError(function() {
     alert("There are no more jobs");
 });
 
-$(document).on("click", "a.addJob", function(event){
+$(document).on("click", "a.addJob", function(event) {
 	event.preventDefault();
-	$("#jobIndex").remove();
+	$("#mainclient").hide();
+ 	$("#jobIndex").remove();
 	$.get('/jobs/new', function(data){
 		// $('.addAJob').html($(data).find('.new_job').html());
 		$('.jobAdding').html($(data).filter('.new_job').html())
-		$('.jobAdding').prepend("<h2> Add a Job </h2>")
-	})
-
-})
+		$('.jobAdding').prepend("<h3> Add a Job </h3>")
+	});
+});
 
 
 
 $(function() {
-	$('body').on("submit", ".jobAdding", function(event){
+	$('body').on("submit", ".jobAdding", function(event) {
 		event.preventDefault();
-		console.log("testing");
 
 		var values = $(this).serialize();
-	
+			
 		var jobs = $.post("/jobs", values);
-		jobs.done(function(data){
+		jobs.done(function(data) {
 		job = new Job(data.id, data.name, data.jobdate, data.payrate, data.categories, data.paid, data.equipment, data.client.id, data.client.fullname)
+		
 		$(".jobName").text(data.name + "'s information:")
 		$(".jobDate").text("Date and Time: " + job.dateAndTime(data.jobdate))
 		$(".jobPay").text("Pay rate: $" + data.payrate)
 		$(".jobCategories").empty()
-		$.each(job.category(data.categories), function(index, value){
+		$.each(job.category(data.categories), function(index, value) {
 			$(".jobCategories").append('<li>' + value + '</li>')
 		})
 		$(".jobPaid").text("Paid: " + data.paid)
@@ -146,7 +146,7 @@ $(function() {
 		$(".js-next").attr("data-id", data.id);
 		})
 		$(this).hide();
-	 })
-
+		$("div").last().addClass("first");
+	});
 });
 

@@ -1,27 +1,28 @@
-<h3 style="margin-bottom: 5px"><%= @client.fullname %>'s info</h3>
+<div class="first" id="mainclient">
+	<h3 style="margin-bottom: 5px"><%= @client.fullname %>'s info</h3>
 
-<div style="display: inline-block" >
-	<%= link_to "Edit Client", edit_client_path(@client) %>
+	<div style="display: inline-block">
+		<%= link_to "Edit Client", edit_client_path(@client) %>
+		<%= link_to "Delete Client", client_path(@client), :method => :delete %>
+		<%= link_to "See all jobs for this client:", client_jobs_path(@client), class: "jobs" %>
+	</div>
 
-	<%= link_to "Delete Client", client_path(@client), :method => :delete %>
 
+	<div style="margin-top: 15px">
+		Street Address: <%= @client.street %>
+		<br>
+		Apt/Building: <%= @client.apt %>
+		<br>
+		Borough: <%= @client.borough %>
+		<br>
+		Notes: <%= @client.notes %>
+	</div>
+</div>
+
+<div class="second">
+	<%= link_to "Add a Job", new_job_path, class: "addJob" %>
+	<br>
 	<%= link_to "See all Clients", clients_path %>
-</div>
-
-
-<div style="margin-top: 15px">
-	Street Address: <%= @client.street %>
-	<br>
-	Apt/Building: <%= @client.apt %>
-	<br>
-	Borough: <%= @client.borough %>
-	<br>
-	Notes: <%= @client.notes %>
-</div>
-<br>
-
-<div>
-<%= link_to "See all jobs for this client:", client_jobs_path(@client), class: "jobs" %>
 </div>
 
 <div class="displayjobs" style="margin-top: 10px">
@@ -29,19 +30,16 @@
 	</ul>
 </div>
 
-<div>
-<%= link_to "Add a Job", new_job_path, class: "addJob" %>
+<div style="margin-top: -548px"  id="makeJob">
+	<form class="jobAdding first">
+	</form>
 </div>
 
-<div>
-<form class="jobAdding">
-</form>
-</div>
 
 <div>
 <h3 class = "jobName"></h3>
 
-<div>
+
 	<p class = "jobDate"></p>
 	
 	<p class = "jobPay"></p>
@@ -58,5 +56,5 @@
 	<p class = "jobEquipment"></p>
 	
 	<p class = "jobClient"></p>
-</div>
+
 </div>
