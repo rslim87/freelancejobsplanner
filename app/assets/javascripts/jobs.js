@@ -62,7 +62,7 @@ $(document).on("click", ".allJobs", function(event){
 	event.preventDefault(); 
 	if ( !$.trim( $('.allInfo').html() ).length  ) {
 		$(".allInfo").append("<ul id='userInfo'></ul>")
-		$(".allInfo").prepend('<h2>List of all Jobs:</h2>')
+		$(".allInfo").prepend('<h2><a href = /jobs>List of all Jobs:</a></h2>')
 		$.get("/jobs" + ".json", function(data){
 			var jobs = data
 			jobs.forEach(function(job){

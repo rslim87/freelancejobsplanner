@@ -3,7 +3,7 @@ $(document).on("click", ".allClients", function(event){
 	event.preventDefault(); 
 	if ( !$.trim( $('.allInfo').html() ).length  ) {
 	 	$(".allInfo").append("<ul id='userInfo'></ul>")
-	 	$(".allInfo").prepend('<h2>List of all Clients:</h2>')
+	 	$(".allInfo").prepend('<h2><a href = /clients>List of all Clients:</a></h2>')
 	 	$.get("/clients" + ".json", function(data){
 	 		var clients = data
 	 		clients.forEach(function(client){

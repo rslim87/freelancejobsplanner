@@ -1,3 +1,4 @@
+<div class="first">
 <h3 class = "jobName"><%= @job.name %>'s information:</h3>
 
 <div>
@@ -22,14 +23,15 @@
 	
 	<p class = "jobClient">Client: <%= link_to "#{@job.client.fullname}", client_path(@job.client) %></p>
 </div>
+</div>
 
-<div>
+<div class="second">
 <%= link_to "Edit Job", edit_job_path(@job) %>
+<br>
 <%= link_to "Delete Job", job_path(@job), :method => :delete %>
+<br>
 <a href="#" class="js-next" data-id="<%=@job.id%>">Next Job</a>
-<div>
-
-<div style="margin-top: 15px">
+<br>
 <%= link_to "See all Jobs", jobs_path, class: 'allJobs' %>
 </div>
 
